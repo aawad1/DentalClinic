@@ -1,9 +1,9 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.domain;
 
 import java.util.Date;
 import java.util.Objects;
 
-public class Patient implements Idable, Passwordabel{
+public class Patient implements Idable, Passwordabel {
     private int id;
     private String Name;
     private Date dateOfBirth;

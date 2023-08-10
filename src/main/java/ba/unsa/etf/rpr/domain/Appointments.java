@@ -1,4 +1,6 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.domain;
+
+import ba.unsa.etf.rpr.domain.Appointment;
 
 import java.util.ArrayList;
 import java.util.List;
