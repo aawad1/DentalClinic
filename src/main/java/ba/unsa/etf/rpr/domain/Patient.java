@@ -3,7 +3,7 @@ package ba.unsa.etf.rpr.domain;
 import java.util.Date;
 import java.util.Objects;
 
-public class Patient implements Idable, Passwordabel {
+public class Patient implements Idable {
     private int id;
     private String Name;
     private Date dateOfBirth;
@@ -38,6 +38,7 @@ public class Patient implements Idable, Passwordabel {
     public void setName(String Name) {
         this.Name = Name;
     }
+
 
     public Date getDateOfBirth() {
         return dateOfBirth;
