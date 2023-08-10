@@ -15,6 +15,9 @@ public class Doctor implements Idable, Passwordabel{
             this.password = password;
         }
 
+        public Doctor() {
+
+        }
 
     //Getters and Setters
 
