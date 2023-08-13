@@ -1,25 +1,44 @@
 package ba.unsa.etf.rpr.dao;
 
-import ba.unsa.etf.rpr.domain.Appointment;
-import jdk.internal.foreign.SystemLookup;
+public class FactoryDao {
 
-public interface FactoryDao {
-    private static final AppointmentDao appointmentDao = AppointmentDaoSQLImpl.getInstance();
-    private static final DoctorDao doctorDao = DoctorDaoSQLImpl.getInstance();
-    private static final PatientDao patientDao = PatientDaoSQLImpl.getInstance();
+    public static final PatientDao patientDao = PatientDaoSQLImpl.getInstance();
+    public static final DoctorDao doctorDao = DoctorDaoSQLImpl.getInstance();
+    public static final AppointmentDao appointmentDao = AppointmentDaoSQLImpl.getInstance();
+    public static final TreatmentDao treatmentDao = TreatmentDaoSQLImpl.getInstance();
 
-    private static final TreatmentDao treatmentDao = TreatmentDaoSQLImpl.getInstance();
+    public FactoryDao(){}
 
-    private FactoryDao(){
+    /**
+     * Method that returns PatientDao object
+     * @return PatientDao
+     */
+    public static PatientDao patientDao(){
+        return patientDao;
     }
 
+    /**
+     * Method that returns DoctorDao object
+     * @return DoctorDao
+     */
+    public static DoctorDao doctorDao(){
+        return doctorDao;
+    }
+
+    /**
+     * Method that returns HistoryDao object
+     * @return HistoryDao
+     */
     public static AppointmentDao appointmentDao(){
         return appointmentDao;
     }
 
-    public static DoctorDao doctorDao() { return doctorDao; }
-
-    public static PatientDao PatientDao(){
-        return patientDao;
+    /**
+     * Method that returns DepartmentDao
+     * @return DepartmentDao
+     */
+    public static TreatmentDao treatmentDao(){
+        return treatmentDao;
     }
+
 }

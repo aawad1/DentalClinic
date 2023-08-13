@@ -1,19 +1,19 @@
 package ba.unsa.etf.rpr.domain;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Appointment {
     private int id;
     private int patientId;
-    private Date dateTime;
+    private LocalDateTime dateTime;
     private int doctorId;
     private String notes;
 
     //Constructors
 
     //Appointment with notes
-    public Appointment(int id, int patientId, Date dateTime, int doctorId, String notes) {
+    public Appointment(int id, int patientId, LocalDateTime dateTime, int doctorId, String notes) {
         this.id = id;
         this.patientId = patientId;
         this.dateTime = dateTime;
@@ -22,7 +22,7 @@ public class Appointment {
     }
 
     //Appointment without notes
-    public Appointment(int id, int patientId, Date dateTime, int doctorId) {
+    public Appointment(int id, int patientId, LocalDateTime dateTime, int doctorId) {
         this.id = id;
         this.patientId = patientId;
         this.dateTime = dateTime;
@@ -49,11 +49,11 @@ public class Appointment {
         this.patientId = patientId;
     }
 
-    public Date getDateTime() {
+    public LocalDateTime getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Date dateTime) {
+    public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
 
