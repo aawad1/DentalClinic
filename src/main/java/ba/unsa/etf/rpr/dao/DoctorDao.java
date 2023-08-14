@@ -14,3 +14,4 @@ public interface DoctorDao extends Dao<Doctor> {
     List<Doctor> searchByNameAndPassword(String name, String password);
 
 }
+
