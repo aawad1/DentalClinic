@@ -7,8 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
-
 
 /**
  * Main class for working with JavaFX framework
@@ -17,13 +15,13 @@ import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 public class AppFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home.fxml"));
         HomeController homeController = new HomeController();
         fxmlLoader.setController(homeController);
         Parent root = fxmlLoader.load();
-        stage.setTitle("Quote Maker v1.0");
-        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        stage.setResizable(false);
+        stage.setTitle("Dental Clinic");
+        stage.setScene(new Scene(root));
+
         stage.show();
     }
 }

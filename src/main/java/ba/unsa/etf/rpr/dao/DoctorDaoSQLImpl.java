@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 
-import ba.unsa.etf.rpr.domain.Doctor;
-
+/*
 public class DoctorDaoSQLImpl extends AbstractDao<Doctor> implements DoctorDao{
 
     private static DoctorDaoSQLImpl instance = null;
@@ -22,3 +21,4 @@ public class DoctorDaoSQLImpl extends AbstractDao<Doctor> implements DoctorDao{
                 instance = null;
         }
 }
+        */

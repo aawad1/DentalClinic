@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Name:" />
+            <TextField text="Name" />
+            <Label text="Date of birth:" />
+            <DatePicker />
+            <Label text="Email:" />
+            <TextField text="Email" />
+            <Label text="Phone number:" />
+            <TextField text="Phone number" />
+            <Label text="Notes:" />
+            <TextArea prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+   </left>
+   <top>
+      <VBox prefHeight="74.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PATIENT INFORMATION">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="314.0" prefWidth="228.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="129.0" text="Appointment history" />
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Date" />
+                      <TableColumn prefWidth="75.0" text="Treatment" />
+                        <TableColumn prefWidth="75.0" text="Doctor" />
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
+            <VBox prefHeight="326.0" prefWidth="229.0">
+               <children>
+                  <Label text="Future appointments" />
+                  <TableView prefHeight="200.0" prefWidth="236.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Date" />
+                      <TableColumn prefWidth="75.0" text="Treatment" />
+                        <TableColumn prefWidth="75.0" text="Doctor" />
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+   <bottom>
+      <Button fx:id="savePatient" alignment="CENTER_RIGHT" mnemonicParsing="false" text="Save" BorderPane.alignment="CENTER_RIGHT">
+         <BorderPane.margin>
+            <Insets bottom="40.0" right="40.0" />
+         </BorderPane.margin>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </bottom>
+</BorderPane>
