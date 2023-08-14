@@ -12,6 +12,10 @@ public class PatientManager implements Manager<Patient> {
         return null;
     }
 
+    public Patient getByName(String name) throws DentalClinicException {
+        return (Patient) FactoryDao.patientDao().searchByName(name);
+    }
+
     public List<Patient> getAll() throws DentalClinicException {
         return FactoryDao.patientDao().getAll();
     }
@@ -29,5 +33,9 @@ public class PatientManager implements Manager<Patient> {
     @Override
     public void add(Patient item) throws DentalClinicException {
 
+        if (getByName(item.getName()) != null)
+            throw new DentalClinicException("Patient with name: " + item.getName() + "already exists");
+
+        FactoryDao.patientDao().add(item);
     }
 }

@@ -23,5 +23,7 @@ import java.util.List;
 
         List<Patient> searchByNameAndUin(String name, Long UIN);
 
+        List<Patient> searchByName(String name);
+
     }
 

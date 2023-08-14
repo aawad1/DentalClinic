@@ -85,6 +85,5 @@ public class Patient implements Idable {
     public int hashCode() {
         return Objects.hash(id, Name, age, phoneNumber, notes);
     }
-
 }
 
