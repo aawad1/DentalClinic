@@ -1,23 +1,21 @@
 package ba.unsa.etf.rpr.domain;
 
-import java.util.Date;
 import java.util.Objects;
 
 public class Patient implements Idable {
     private int id;
     private String Name;
-    private Date dateOfBirth;
+    private int age;
     private String phoneNumber;
-    private String email;
 
     // Constructors
 
-    public Patient(int id, String Name, Date dateOfBirth, String phoneNumber, String email, String address) {
+    public Patient(int id, String Name, int age, String phoneNumber) {
         this.id = id;
         this.Name = Name;
-        this.dateOfBirth = dateOfBirth;
+        this.age = age;
         this.phoneNumber = phoneNumber;
-        this.email = email;
+
     }
 
     public Patient() {}
@@ -38,14 +36,12 @@ public class Patient implements Idable {
     public void setName(String Name) {
         this.Name = Name;
     }
-
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
+    public int getAge() {
+        return age;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getPhoneNumber() {
@@ -56,25 +52,17 @@ public class Patient implements Idable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Patient patient = (Patient) o;
-        return id == patient.id && Objects.equals(Name, patient.Name) && Objects.equals(dateOfBirth, patient.dateOfBirth) && Objects.equals(phoneNumber, patient.phoneNumber) && Objects.equals(email, patient.email);
+        return id == patient.id && Objects.equals(Name, patient.Name) && age == patient.age && Objects.equals(phoneNumber, patient.phoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, Name, dateOfBirth, phoneNumber, email);
+        return Objects.hash(id, Name, age, phoneNumber);
     }
 
     @Override
@@ -82,9 +70,8 @@ public class Patient implements Idable {
         return "Patient{" +
                 "id=" + id +
                 ", Name='" + Name + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
+                ", Age=" + age +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
                 '}';
     }
 
