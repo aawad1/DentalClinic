@@ -1,11 +1,14 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.domain.Appointments;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.w3c.dom.Text;
 
 public class HomeController {
@@ -39,7 +42,12 @@ public class HomeController {
     }
 
     public void initialize() {
-        appCountLabel.setText(appCountLabel.getText() + appointments.getAppointmentList().size());
+        Timeline timeline = new Timeline(new KeyFrame(Duration.minutes(1), event -> {
+            appCountLabel.setText(appCountLabel.getText() + appointments.getAppointmentList().size());
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
+        timeline.play();
+
     }
 
 }
