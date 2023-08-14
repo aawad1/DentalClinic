@@ -18,11 +18,9 @@ public class FactoryDao {
         return doctorDao;
     }
 
-    public static AppointmentDao appointmentDao() {
-        return appointmentDao();
-    }
+    public static AppointmentDao appointmentDao() { return appointmentDao; }
 
     public static TreatmentDao treatmentDao() {
-        return treatmentDao();
+        return treatmentDao;
     }
 }

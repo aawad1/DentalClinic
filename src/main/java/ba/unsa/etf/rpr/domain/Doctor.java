@@ -11,8 +11,7 @@ public class Doctor implements Idable, Passwordabel {
 
         public Doctor(int id, String name) {
             this.id = id;
-            Name = name;
-            this.password = password;
+            this.Name = name;
         }
 
         public Doctor() {

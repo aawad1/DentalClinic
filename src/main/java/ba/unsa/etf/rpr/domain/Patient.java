@@ -7,15 +7,17 @@ public class Patient implements Idable {
     private String Name;
     private int age;
     private String phoneNumber;
+    private String notes;
 
-    // Constructors
 
-    public Patient(int id, String Name, int age, String phoneNumber) {
+// Constructors
+
+    public Patient(int id, String Name, int age, String phoneNumber, String notes) {
         this.id = id;
         this.Name = Name;
         this.age = age;
         this.phoneNumber = phoneNumber;
-
+        this.notes = notes;
     }
 
     public Patient() {}
@@ -52,17 +54,12 @@ public class Patient implements Idable {
         this.phoneNumber = phoneNumber;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Patient patient = (Patient) o;
-        return id == patient.id && Objects.equals(Name, patient.Name) && age == patient.age && Objects.equals(phoneNumber, patient.phoneNumber);
+    public String getNotes() {
+        return notes;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, Name, age, phoneNumber);
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     @Override
@@ -70,9 +67,23 @@ public class Patient implements Idable {
         return "Patient{" +
                 "id=" + id +
                 ", Name='" + Name + '\'' +
-                ", Age=" + age +
+                ", age=" + age +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", notes='" + notes + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Patient patient = (Patient) o;
+        return id == patient.id && age == patient.age && Objects.equals(Name, patient.Name) && Objects.equals(phoneNumber, patient.phoneNumber) && Objects.equals(notes, patient.notes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, Name, age, phoneNumber, notes);
     }
 
 }

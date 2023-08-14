@@ -9,12 +9,16 @@ public class NewPatientController {
     public TextField age;
     public TextField phoneNumber;
     public Button savePatient;
+    public TextArea notes;
     private Patient patient = new Patient();
 
     public void addNewPatient(ActionEvent actionEvent) {
         patient.setName(name.getText());
         patient.setAge(Integer.parseInt(age.getText()));
         patient.setPhoneNumber(phoneNumber.getText());
+        patient.setNotes(notes.getText());
+
+
 
     }
 }
