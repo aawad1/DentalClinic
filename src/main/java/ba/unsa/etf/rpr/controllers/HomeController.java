@@ -29,6 +29,7 @@ public class HomeController {
     public void openPatientWindow(ActionEvent actionEvent) {
         new OpenNewWindow().openDialog("Patients", "/Patients.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
     }
+
     @FXML
     public void openTreatmentsWindow(ActionEvent actionEvent) {
         new OpenNewWindow().openDialog("Treatments", "/Treatments.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());

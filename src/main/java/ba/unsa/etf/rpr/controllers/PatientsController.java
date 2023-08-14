@@ -10,22 +10,20 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class PatientsController {
-    @FXML
-    public BorderPane patientsScene;
-    private final PatientManager patientManager = new PatientManager();
-    public Button newPatientButton;
-    public TableView patientsTable;
+
     public TableColumn idColumn;
     public TableColumn nameColumn;
     public TableColumn ageColumn;
     public TableColumn phoneNumberColumn;
     public TableColumn actionsColumn;
+    public TableView patientsTable;
+    public Button newPatientButton;
+    private PatientManager patientManager = new PatientManager();
 
-
+    @FXML
     public void initialize() {
         idColumn.setCellFactory(new PropertyValueFactory<Patient, String>("id"));
         nameColumn.setCellFactory(new PropertyValueFactory<Patient, String>("Name"));
@@ -33,7 +31,7 @@ public class PatientsController {
         phoneNumberColumn.setCellFactory(new PropertyValueFactory<Patient, String>("phoneNumber"));
         actionsColumn.setCellFactory(new ActionsCellFactory());
 
-        refreshPatients();
+        //refreshPatient();
     }
 
     private void refreshPatients() {
@@ -48,7 +46,7 @@ public class PatientsController {
     public void gotoNewPatient(ActionEvent actionEvent) {
         try {
             new OpenNewWindow().openDialog("New Patient", "/NewPatient.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
-        } catch (Exception e){
+        } catch (Exception e) {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
 
