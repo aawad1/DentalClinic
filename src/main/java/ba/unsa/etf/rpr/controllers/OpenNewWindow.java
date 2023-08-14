@@ -44,6 +44,7 @@ public class OpenNewWindow {
      * @param header of alert
      * @param context explanation of alert
      */
+
     public static void alert(Alert.AlertType type, String title, String header, String context){
         Alert alert = new Alert(type);
         alert.setTitle(title);

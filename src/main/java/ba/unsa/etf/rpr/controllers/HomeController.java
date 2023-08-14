@@ -25,19 +25,19 @@ public class HomeController {
     public void openDoctorWindow(ActionEvent actionEvent) {
         new OpenNewWindow().openDialog("Doctors", "/Doctors.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
     }
-
+    @FXML
     public void openPatientWindow(ActionEvent actionEvent) {
         new OpenNewWindow().openDialog("Patients", "/Patients.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
     }
-
+    @FXML
     public void openTreatmentsWindow(ActionEvent actionEvent) {
         new OpenNewWindow().openDialog("Treatments", "/Treatments.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
     }
-
+    @FXML
     public void openAppointmentsWindow(ActionEvent actionEvent) {
         new OpenNewWindow().openDialog("Appointments", "/Appointments.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
     }
-
+    @FXML
     public void initialize() {
         Timeline timeline = new Timeline(new KeyFrame(Duration.minutes(1), event -> {
             appCountLabel.setText(appCountLabel.getText() + appointments.getAppointmentList().size());

@@ -5,10 +5,13 @@ import ba.unsa.etf.rpr.controllers.components.ActionsCellFactory;
 import ba.unsa.etf.rpr.domain.Patient;
 import ba.unsa.etf.rpr.exceptions.DentalClinicException;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class PatientsController {
     @FXML
@@ -42,4 +45,12 @@ public class PatientsController {
         }
     }
 
+    public void gotoNewPatient(ActionEvent actionEvent) {
+        try {
+            new OpenNewWindow().openDialog("New Patient", "/NewPatient.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+        } catch (Exception e){
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
+
+    }
 }

@@ -23,7 +23,7 @@
       </TableView>
    </center>
    <bottom>
-      <Button fx:id="newPatientButton" mnemonicParsing="false" text="New Patient" BorderPane.alignment="CENTER_LEFT">
+      <Button fx:id="newPatientButton" mnemonicParsing="false" onAction="#gotoNewPatient" text="New Patient" BorderPane.alignment="CENTER_LEFT">
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin>
