@@ -12,24 +12,21 @@ import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 /**
  * Class that opens the new view for us
- * @param <Type> controller
  */
-public class OpenNewWindow<Type> {
+public class OpenNewWindow {
 
     /**
      * Method that opens the new window for us
      * @param title of the page
      * @param file name of the fxml file
-     * @param controller controller that is suited to work with the new view
      * @param previous view
      */
-    public void openDialog(String title, String file, Type controller, Stage previous) {
+    public void openDialog(String title, String file, Stage previous) {
         try {
             if(previous != null) {
                 previous.close();
             }
             FXMLLoader loader = new FXMLLoader(getClass().getResource(file));
-            loader.setController(controller);
             Stage stage = new Stage();
             stage.setScene(new Scene((Parent) loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setTitle(title);

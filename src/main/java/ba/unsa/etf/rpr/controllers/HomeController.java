@@ -4,6 +4,8 @@ import ba.unsa.etf.rpr.domain.Appointments;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -19,25 +21,21 @@ public class HomeController {
     public Label appCountLabel;
     public Appointments appointments;
 
-
+    @FXML
     public void openDoctorWindow(ActionEvent actionEvent) {
-        DoctorsController doctorsController = new DoctorsController();
-        new OpenNewWindow<DoctorsController>().openDialog("Doctors", "/Home.fxml", doctorsController, (Stage) homeScene.getScene().getWindow());
+        new OpenNewWindow().openDialog("Doctors", "/Doctors.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
     }
 
     public void openPatientWindow(ActionEvent actionEvent) {
-        PatientsController patientsController = new PatientsController();
-        new OpenNewWindow<PatientsController>().openDialog("Patients", "/Patients.fxml", patientsController, (Stage) homeScene.getScene().getWindow());
+        new OpenNewWindow().openDialog("Patients", "/Patients.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
     }
 
     public void openTreatmentsWindow(ActionEvent actionEvent) {
-        TreatmentsController treatmentsController = new TreatmentsController();
-        new OpenNewWindow<TreatmentsController>().openDialog("Treatments", "/Treatments.fxml", treatmentsController, (Stage) homeScene.getScene().getWindow());
+        new OpenNewWindow().openDialog("Treatments", "/Treatments.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
     }
 
     public void openAppointmentsWindow(ActionEvent actionEvent) {
-        AppointmentsController appointmentsController = new AppointmentsController();
-        new OpenNewWindow<AppointmentsController>().openDialog("Appointments", "/Appointments.fxml", appointmentsController, (Stage) homeScene.getScene().getWindow());
+        new OpenNewWindow().openDialog("Appointments", "/Appointments.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
     }
 
     public void initialize() {

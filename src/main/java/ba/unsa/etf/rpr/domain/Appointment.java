@@ -7,26 +7,23 @@ public class Appointment {
     private int id;
     private int patientId;
     private LocalDateTime dateTime;
-    private int doctorId;
     private String notes;
 
     //Constructors
 
     //Appointment with notes
-    public Appointment(int id, int patientId, LocalDateTime dateTime, int doctorId, String notes) {
+    public Appointment(int id, int patientId, LocalDateTime dateTime, String notes) {
         this.id = id;
         this.patientId = patientId;
         this.dateTime = dateTime;
-        this.doctorId = doctorId;
         this.notes = notes;
     }
 
     //Appointment without notes
-    public Appointment(int id, int patientId, LocalDateTime dateTime, int doctorId) {
+    public Appointment(int id, int patientId, LocalDateTime dateTime) {
         this.id = id;
         this.patientId = patientId;
         this.dateTime = dateTime;
-        this.doctorId = doctorId;
     }
 
     public Appointment() {}
@@ -57,14 +54,6 @@ public class Appointment {
         this.dateTime = dateTime;
     }
 
-    public int getDoctorId() {
-        return doctorId;
-    }
-
-    public void setDoctorId(int doctorId) {
-        this.doctorId = doctorId;
-    }
-
     public String getNotes() {
         return notes;
     }
@@ -78,12 +67,12 @@ public class Appointment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Appointment that = (Appointment) o;
-        return id == that.id && patientId == that.patientId && doctorId == that.doctorId && Objects.equals(dateTime, that.dateTime) && Objects.equals(notes, that.notes);
+        return id == that.id && patientId == that.patientId && Objects.equals(dateTime, that.dateTime) && Objects.equals(notes, that.notes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, patientId, dateTime, doctorId, notes);
+        return Objects.hash(id, patientId, dateTime, notes);
     }
 
     @Override
@@ -92,7 +81,6 @@ public class Appointment {
                 "id=" + id +
                 ", patientId=" + patientId +
                 ", dateTime=" + dateTime +
-                ", doctorId=" + doctorId +
                 ", notes='" + notes + '\'' +
                 '}';
     }
