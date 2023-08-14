@@ -4,13 +4,11 @@ import ba.unsa.etf.rpr.domain.Appointments;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.w3c.dom.Text;
 
 public class HomeController {
     public BorderPane homeScene;
@@ -18,8 +16,6 @@ public class HomeController {
     public Button idPatients;
     public Button idAppointments;
     public Button idTreatments;
-    public Text appointmentsCount;
-    @FXML
     public Label appCountLabel;
     public Appointments appointments;
 

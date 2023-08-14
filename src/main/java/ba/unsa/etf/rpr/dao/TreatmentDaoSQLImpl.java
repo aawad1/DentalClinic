@@ -2,6 +2,10 @@ package ba.unsa.etf.rpr.dao;
 
 public class TreatmentDaoSQLImpl {
 
-    public static TreatmentDao getInstance() {
+    private static TreatmentDaoSQLImpl instance = null;
+    public static TreatmentDaoSQLImpl getInstance(){
+        if(instance == null)
+            instance = new TreatmentDaoSQLImpl();
+        return instance;
     }
 }

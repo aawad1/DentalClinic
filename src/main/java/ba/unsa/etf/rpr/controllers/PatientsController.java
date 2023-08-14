@@ -5,12 +5,15 @@ import ba.unsa.etf.rpr.controllers.components.ActionsCellFactory;
 import ba.unsa.etf.rpr.domain.Patient;
 import ba.unsa.etf.rpr.exceptions.DentalClinicException;
 import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
 public class PatientsController {
+    @FXML
     public BorderPane patientsScene;
+    private final PatientManager patientManager = new PatientManager();
     public Button newPatientButton;
     public TableView patientsTable;
     public TableColumn idColumn;
@@ -32,7 +35,7 @@ public class PatientsController {
 
     private void refreshPatients() {
         try {
-            patientsTable.setItems(FXCollections.observableList(PatientManager.getAll()));
+            patientsTable.setItems(FXCollections.observableList(patientManager.getAll()));
             patientsTable.refresh();
         } catch (DentalClinicException e) {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();

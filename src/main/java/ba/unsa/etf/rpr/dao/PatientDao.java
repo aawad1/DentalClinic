@@ -17,7 +17,7 @@ import java.util.List;
          * Method that lists out the patients that have the specified
          * name and password
          * @param name of the patient
-         * @param pass of the patient
+         * @param UIN of the patient
          * @return list of patients that have the same name and password
          */
 
