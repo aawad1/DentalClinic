@@ -6,9 +6,7 @@ public class FactoryDao {
     private static final AppointmentDao appointmentDao = (AppointmentDao) AppointmentDaoSQLImpl.getInstance();
     private static final TreatmentDao treatmentDao = (TreatmentDao) TreatmentDaoSQLImpl.getInstance();
 
-    public FactoryDao(){
-
-    }
+    public FactoryDao(){  }
 
     public static PatientDao patientDao() {
         return patientDao;

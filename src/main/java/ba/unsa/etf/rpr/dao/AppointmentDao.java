@@ -1,4 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 
-public interface AppointmentDao {
+import ba.unsa.etf.rpr.domain.Appointment;
+
+public interface AppointmentDao extends Dao<Appointment> {
 }

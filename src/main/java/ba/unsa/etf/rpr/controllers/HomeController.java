@@ -39,6 +39,7 @@ public class HomeController {
 
     @FXML
     public void openTreatmentsWindow(ActionEvent actionEvent) {
+        System.out.println("otvori");
         new OpenNewWindow().openDialog("Treatments", "/Treatments.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
     }
     @FXML

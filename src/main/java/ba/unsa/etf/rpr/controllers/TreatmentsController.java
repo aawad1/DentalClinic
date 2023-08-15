@@ -32,7 +32,7 @@ public class TreatmentsController {
         descriptionColumn.setCellFactory(new PropertyValueFactory<Patient, String>("phoneNumber"));
         actionsColumn.setCellFactory(new ActionsCellFactory());
 
-        refreshTreatments();
+        //refreshTreatments();
     }
 
     private void refreshTreatments() {
