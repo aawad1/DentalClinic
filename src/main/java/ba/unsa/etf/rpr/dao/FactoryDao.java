@@ -23,4 +23,5 @@ public class FactoryDao {
     public static TreatmentDao treatmentDao() {
         return treatmentDao;
     }
+
 }

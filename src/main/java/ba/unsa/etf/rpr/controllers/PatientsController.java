@@ -21,6 +21,7 @@ public class PatientsController {
     public TableColumn actionsColumn;
     public TableView patientsTable;
     public Button newPatientButton;
+    public Button homeButton;
     private PatientManager patientManager = new PatientManager();
 
     @FXML
@@ -51,5 +52,14 @@ public class PatientsController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
 
+    }
+
+    public void goHome(ActionEvent actionEvent) {
+        System.out.println("idiKucii--->");
+        try {
+            new OpenNewWindow().openDialog("Home", "/Home.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
     }
 }

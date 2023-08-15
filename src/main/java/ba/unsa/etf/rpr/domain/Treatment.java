@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-public class Treatment {
+public class Treatment implements Idable {
     private int id;
     private String name;
     private String description;

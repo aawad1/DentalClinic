@@ -73,7 +73,7 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
     }
 
     @Override
-    public List<Patient> searchByName(String name) {
+    public Patient searchByName(String name) {
         return null;
     }
 }

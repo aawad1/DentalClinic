@@ -1,4 +1,11 @@
 package ba.unsa.etf.rpr.dao;
 
-public interface TreatmentDao {
+import ba.unsa.etf.rpr.domain.Treatment;
+
+import java.util.List;
+
+public interface TreatmentDao extends Dao<Treatment>{
+    List<Treatment> getAll();
+
+    Treatment searchByName(String name);
 }
