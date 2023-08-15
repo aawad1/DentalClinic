@@ -26,9 +26,9 @@ public class PatientsController {
 
     @FXML
     public void initialize() {
-        idColumn.setCellFactory(new PropertyValueFactory<Patient, String>("id"));
+        idColumn.setCellFactory(new PropertyValueFactory<Patient, Integer>("id"));
         nameColumn.setCellFactory(new PropertyValueFactory<Patient, String>("Name"));
-        ageColumn.setCellFactory(new PropertyValueFactory<Patient, String>("age"));
+        ageColumn.setCellFactory(new PropertyValueFactory<Patient, Integer>("age"));
         phoneNumberColumn.setCellFactory(new PropertyValueFactory<Patient, String>("phoneNumber"));
         actionsColumn.setCellFactory(new ActionsCellFactory());
 

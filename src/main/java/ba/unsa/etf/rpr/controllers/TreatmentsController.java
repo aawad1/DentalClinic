@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.TreatmentManager;
 import ba.unsa.etf.rpr.controllers.components.ActionsCellFactory;
-import ba.unsa.etf.rpr.domain.Patient;
+import ba.unsa.etf.rpr.domain.Treatment;
 import ba.unsa.etf.rpr.exceptions.DentalClinicException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -26,10 +26,10 @@ public class TreatmentsController {
 
     @FXML
     public void initialize() {
-        idColumn.setCellFactory(new PropertyValueFactory<Patient, String>("id"));
-        nameColumn.setCellFactory(new PropertyValueFactory<Patient, String>("Name"));
-        costColumn.setCellFactory(new PropertyValueFactory<Patient, String>("age"));
-        descriptionColumn.setCellFactory(new PropertyValueFactory<Patient, String>("phoneNumber"));
+        idColumn.setCellFactory(new PropertyValueFactory<Treatment, Integer>("id"));
+        nameColumn.setCellFactory(new PropertyValueFactory<Treatment, String>("name"));
+        costColumn.setCellFactory(new PropertyValueFactory<Treatment, Double>("cost"));
+        descriptionColumn.setCellFactory(new PropertyValueFactory<Treatment, String>("description"));
         actionsColumn.setCellFactory(new ActionsCellFactory());
 
         //refreshTreatments();

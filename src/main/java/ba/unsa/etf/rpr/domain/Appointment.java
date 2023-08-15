@@ -3,26 +3,26 @@ package ba.unsa.etf.rpr.domain;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Appointment {
+public class Appointment implements Idable {
     private int id;
-    private int patientId;
+    private Patient patient;
     private LocalDateTime dateTime;
     private String notes;
 
     //Constructors
 
     //Appointment with notes
-    public Appointment(int id, int patientId, LocalDateTime dateTime, String notes) {
+    public Appointment(int id, Patient patient, LocalDateTime dateTime, String notes) {
         this.id = id;
-        this.patientId = patientId;
+        this.patient = patient;
         this.dateTime = dateTime;
         this.notes = notes;
     }
 
     //Appointment without notes
-    public Appointment(int id, int patientId, LocalDateTime dateTime) {
+    public Appointment(int id, Patient patient, LocalDateTime dateTime) {
         this.id = id;
-        this.patientId = patientId;
+        this.patient = patient;
         this.dateTime = dateTime;
     }
 
@@ -38,12 +38,12 @@ public class Appointment {
         this.id = id;
     }
 
-    public int getPatientId() {
-        return patientId;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     public LocalDateTime getDateTime() {
@@ -67,19 +67,19 @@ public class Appointment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Appointment that = (Appointment) o;
-        return id == that.id && patientId == that.patientId && Objects.equals(dateTime, that.dateTime) && Objects.equals(notes, that.notes);
+        return id == that.id && patient == that.patient && Objects.equals(dateTime, that.dateTime) && Objects.equals(notes, that.notes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, patientId, dateTime, notes);
+        return Objects.hash(id, patient, dateTime, notes);
     }
 
     @Override
     public String toString() {
         return "Appointment{" +
                 "id=" + id +
-                ", patientId=" + patientId +
+                ", patient=" + patient +
                 ", dateTime=" + dateTime +
                 ", notes='" + notes + '\'' +
                 '}';
