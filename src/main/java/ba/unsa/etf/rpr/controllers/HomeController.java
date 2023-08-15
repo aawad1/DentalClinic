@@ -23,6 +23,13 @@ public class HomeController {
 
     @FXML
     public void openDoctorWindow(ActionEvent actionEvent) {
+ //      Stage stage = (Stage) idDoctors.getScene().getWindow();
+
+   //     String stageName = stage.getTitle();
+     //   String file = stage.getClass().get
+       // Object sceneFile = idDoctors.getUserData();
+       // System.out.println(sceneName);
+
         new OpenNewWindow().openDialog("Doctors", "/Doctors.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
     }
     @FXML

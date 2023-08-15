@@ -44,6 +44,7 @@ public class PatientsController {
     }
 
     public void gotoNewPatient(ActionEvent actionEvent) {
+        System.out.println("klikk--->");
         try {
             new OpenNewWindow().openDialog("New Patient", "/NewPatient.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
         } catch (Exception e) {

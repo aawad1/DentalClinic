@@ -21,21 +21,28 @@ public class OpenNewWindow {
      * @param file name of the fxml file
      * @param previous view
      */
+
+
     public void openDialog(String title, String file, Stage previous) {
         try {
-            if(previous != null) {
-                previous.close();
-            }
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource(file));
             Stage stage = new Stage();
             stage.setScene(new Scene((Parent) loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setTitle(title);
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
+            if(previous != null) {
+                previous.close();
+            }
         } catch (Exception e){
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
+
+
+
+
 
     /**
      * Method that pops up an alert window, that is usually called when something goes wrong
