@@ -1,18 +1,19 @@
 package ba.unsa.etf.rpr.domain;
 
-import java.time.LocalDateTime;
+import javafx.scene.control.DatePicker;
+
 import java.util.Objects;
 
 public class Appointment implements Idable {
     private int id;
     private Patient patient;
-    private LocalDateTime dateTime;
+    private DatePicker dateTime;
     private String notes;
 
     //Constructors
 
     //Appointment with notes
-    public Appointment(int id, Patient patient, LocalDateTime dateTime, String notes) {
+    public Appointment(int id, Patient patient, DatePicker dateTime, String notes) {
         this.id = id;
         this.patient = patient;
         this.dateTime = dateTime;
@@ -20,7 +21,7 @@ public class Appointment implements Idable {
     }
 
     //Appointment without notes
-    public Appointment(int id, Patient patient, LocalDateTime dateTime) {
+    public Appointment(int id, Patient patient, DatePicker dateTime) {
         this.id = id;
         this.patient = patient;
         this.dateTime = dateTime;
@@ -46,11 +47,11 @@ public class Appointment implements Idable {
         this.patient = patient;
     }
 
-    public LocalDateTime getDateTime() {
+    public DatePicker getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
+    public void setDateTime(DatePicker dateTime) {
         this.dateTime = dateTime;
     }
 

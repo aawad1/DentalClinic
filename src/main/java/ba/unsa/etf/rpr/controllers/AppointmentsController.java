@@ -2,7 +2,9 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.AppointmentManager;
 import ba.unsa.etf.rpr.controllers.components.ActionsCellFactory;
+import ba.unsa.etf.rpr.dao.PatientDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.Appointment;
+import ba.unsa.etf.rpr.domain.Patient;
 import ba.unsa.etf.rpr.exceptions.DentalClinicException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -11,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.time.LocalDateTime;
 
@@ -25,10 +28,12 @@ public class AppointmentsController {
     private Appointment appointment = new Appointment();
     private AppointmentManager appointmentManager = new AppointmentManager();
 
+
     @FXML
     public void initialize() {
         idColumn.setCellFactory(new PropertyValueFactory<Appointment, Integer>("id"));
-        patientNameColumn.setCellFactory(new PropertyValueFactory<Appointment, String>("patientName"));
+        Patient patient = new PatientDaoSQLImpl().searchByName(patientNameColumn.getText());
+        patientNameColumn.setCellFactory((Callback<TableColumn, TableCell>) patient);
         dateColumn.setCellFactory(new PropertyValueFactory<Appointment, LocalDateTime>("dateTime"));
         actionsColumn.setCellFactory(new ActionsCellFactory());
 

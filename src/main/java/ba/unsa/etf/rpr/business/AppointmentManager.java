@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.business;
 
+import ba.unsa.etf.rpr.dao.FactoryDao;
 import ba.unsa.etf.rpr.domain.Appointment;
 import ba.unsa.etf.rpr.exceptions.DentalClinicException;
 
@@ -13,7 +14,7 @@ public class AppointmentManager implements Manager<Appointment> {
 
     @Override
     public List<Appointment> getAll() throws DentalClinicException {
-        return null;
+        return FactoryDao.appointmentDao().getAll();
     }
 
     @Override

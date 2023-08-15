@@ -45,7 +45,7 @@
                   </TextArea>
                </children>
             </VBox>
-            <Button fx:id="saveTreatment" alignment="BOTTOM_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addNewTreatment" text="Save" GridPane.columnIndex="1">
+            <Button fx:id="saveAppointment" alignment="BOTTOM_CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addNewAppointment" text="Save" GridPane.columnIndex="1">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
