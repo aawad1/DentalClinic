@@ -16,7 +16,6 @@
             <TableColumn fx:id="idColumn" minWidth="-1.0" prefWidth="66.0" text="Id" />
             <TableColumn fx:id="patientNameColumn" minWidth="-1.0" prefWidth="111.0" text="Patient Name" />
             <TableColumn fx:id="dateColumn" minWidth="-1.0" prefWidth="74.0" text="Date" />
-            <TableColumn fx:id="timeColumn" minWidth="-1.0" prefWidth="67.0" text="Time" />
             <TableColumn fx:id="actionsColumn" minWidth="-1.0" prefWidth="75.0" text="Actions" />
          </columns>
          <BorderPane.margin>

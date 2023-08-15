@@ -6,11 +6,11 @@ public class Treatment implements Idable {
     private int id;
     private String name;
     private String description;
-    private double cost;
+    private Double cost;
 
     //Constructors
 
-    public Treatment(int id, String name, String description, double cost) {
+    public Treatment(int id, String name, String description, Double cost) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -49,7 +49,7 @@ public class Treatment implements Idable {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(Double cost) {
         this.cost = cost;
     }
 
