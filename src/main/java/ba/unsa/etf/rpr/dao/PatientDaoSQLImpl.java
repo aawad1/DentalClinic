@@ -69,17 +69,30 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
 
     @Override
     public Map<String, Object> object2row(Patient object) {
-        Map<String, Object> item = new TreeMap<>();
-        item.put("id", object.getId());
-        item.put("Name", object.getName());
-        item.put("Age", object.getAge());
-        item.put("phoneNumber", object.getPhoneNumber());
-        item.put("Notes", object.getNotes());
-        return item;
+        try {
+            Map<String, Object> item = new TreeMap<>();
+            item.put("id", object.getId());
+            item.put("Name", object.getName());
+            item.put("Age", object.getAge());
+            item.put("phoneNumber", object.getPhoneNumber());
+            item.put("Notes", object.getNotes());
+            return item;
+        }catch (Exception e){
+            try {
+                throw new DentalClinicException(e.getMessage(), e);
+            } catch (DentalClinicException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
     }
 
     @Override
     public Patient searchByName(String name) throws DentalClinicException {
-        return executeQueryUnique("SELECT * FROM PatientsTable WHERE Name = ?", new Object[]{name});
+        try {
+            Patient p = executeQueryUnique("SELECT * FROM PatientsTable WHERE Name = ?", new Object[]{name});
+            return p;
+        }catch (DentalClinicException e){
+            return null;
+        }
     }
 }

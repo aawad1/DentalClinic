@@ -6,7 +6,6 @@ import ba.unsa.etf.rpr.domain.Patient;
 import ba.unsa.etf.rpr.exceptions.DentalClinicException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,21 +17,25 @@ public class PatientsController {
     public TableColumn nameColumn;
     public TableColumn ageColumn;
     public TableColumn phoneNumberColumn;
-    public TableColumn actionsColumn;
-    public TableView patientsTable;
+    public TableColumn<Patient, Void> actionsColumn;
+    public TableView<Patient> patientsTable;
     public Button newPatientButton;
     public Button homeButton;
-    private PatientManager patientManager = new PatientManager();
+    private final PatientManager patientManager = new PatientManager();
 
-    @FXML
+
     public void initialize() {
-        idColumn.setCellFactory(new PropertyValueFactory<Patient, Integer>("id"));
-        nameColumn.setCellFactory(new PropertyValueFactory<Patient, String>("Name"));
-        ageColumn.setCellFactory(new PropertyValueFactory<Patient, Integer>("age"));
-        phoneNumberColumn.setCellFactory(new PropertyValueFactory<Patient, String>("phoneNumber"));
-        actionsColumn.setCellFactory(new ActionsCellFactory());
+        try {
+            idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+            nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
+            ageColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
+            phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+            actionsColumn.setCellFactory(new ActionsCellFactory());
 
-        //refreshPatient();
+            refreshPatients();
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
     }
 
     private void refreshPatients() {

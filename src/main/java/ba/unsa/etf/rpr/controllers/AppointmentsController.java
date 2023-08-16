@@ -25,8 +25,8 @@ public class AppointmentsController {
     public TableColumn actionsColumn;
     public Button newAppointmentButton;
     public Button homeButton;
-    private Appointment appointment = new Appointment();
-    private AppointmentManager appointmentManager = new AppointmentManager();
+    private final Appointment appointment = new Appointment();
+    private final AppointmentManager appointmentManager = new AppointmentManager();
 
 
     @FXML

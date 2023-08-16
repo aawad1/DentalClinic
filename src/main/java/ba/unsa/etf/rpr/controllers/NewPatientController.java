@@ -19,10 +19,14 @@ public class NewPatientController {
     private PatientManager patientManager = new PatientManager();
 
     public void addNewPatient(ActionEvent actionEvent) {
-        patient.setName(name.getText());
-        patient.setAge(Integer.parseInt(age.getText()));
-        patient.setPhoneNumber(phoneNumber.getText());
-        patient.setNotes(notes.getText());
+        try {
+            patient.setName(name.getText());
+            patient.setAge(Integer.parseInt(age.getText()));
+            patient.setPhoneNumber(phoneNumber.getText());
+            patient.setNotes(notes.getText());
+        } catch (Exception e) {
+            OpenNewWindow.alert(Alert.AlertType.ERROR, "ERROR!", "Something went wrong", e.getMessage());
+        }
 
         try {
             patientManager.add(patient);
@@ -32,7 +36,6 @@ public class NewPatientController {
         } finally {
             new OpenNewWindow().openDialog("Patients", "/Patients.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
         }
-
     }
 
     public void goBack(ActionEvent actionEvent) {

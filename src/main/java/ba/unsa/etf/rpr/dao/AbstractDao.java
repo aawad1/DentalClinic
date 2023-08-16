@@ -28,7 +28,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
         if(AbstractDao.connection==null) {
             try {
                 Properties p = new Properties();
-                p.load(ClassLoader.getSystemResource("application.properties").openStream());
+                p.load(ClassLoader.getSystemResource("application.properties.sample").openStream());
                 String url = p.getProperty("db.connection_string");
                 String username = p.getProperty("db.username");
                 String password = p.getProperty("db.password");
@@ -38,7 +38,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
             }finally {
                 Runtime.getRuntime().addShutdownHook(new Thread(){
                     @Override
-                    public void run(){
+                    public void run() {
                         try {
                             connection.close();
                         } catch (SQLException e) {
@@ -51,7 +51,11 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
     }
 
     public static Connection getConnection(){
-        return AbstractDao.connection;
+        if(connection == null) {
+            createConnection();
+            return connection;
+        }
+        return connection;
     }
 
     /**

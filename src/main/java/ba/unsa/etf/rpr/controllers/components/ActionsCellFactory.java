@@ -1,9 +1,8 @@
 package ba.unsa.etf.rpr.controllers.components;
 
+import ba.unsa.etf.rpr.dao.FactoryDao;
 import ba.unsa.etf.rpr.domain.Patient;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
@@ -19,12 +18,20 @@ public class ActionsCellFactory implements Callback<TableColumn<Patient, Void>, 
                 editButton.setOnAction(event -> {
                     Patient patient = (Patient) getTableView().getItems().get(getIndex());
                     // Handle edit action here
+
                     System.out.println("Edit clicked for patient: " + patient.getName());
                 });
 
                 deleteButton.setOnAction(event -> {
                     Patient patient = (Patient) getTableView().getItems().get(getIndex());
                     // Handle delete action here
+                    try {
+                        FactoryDao.patientDao().delete(patient.getId());
+                        //patient.refreshPatients();
+                    }catch (Exception e){
+                        new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+
+                    }
                     System.out.println("Delete clicked for patient: " + patient.getName());
                 });
             }

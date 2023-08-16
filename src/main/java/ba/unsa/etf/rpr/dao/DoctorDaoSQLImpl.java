@@ -5,7 +5,6 @@ import ba.unsa.etf.rpr.domain.Doctor;
 import ba.unsa.etf.rpr.exceptions.DentalClinicException;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -27,15 +26,7 @@ public class DoctorDaoSQLImpl extends AbstractDao<Doctor> implements DoctorDao{
 
     @Override
     public Doctor row2object(ResultSet rs) throws DentalClinicException {
-        try {
-            Doctor doctor = new Doctor();
-            doctor.setId(rs.getInt("id"));
-            doctor.setName(rs.getString("Name"));
-            doctor.setPassword(rs.getString("password"));
-            return doctor;
-        } catch (SQLException e) {
-            throw new DentalClinicException(e.getMessage(), e);
-        }
+        return null;
     }
 
     @Override
@@ -44,7 +35,7 @@ public class DoctorDaoSQLImpl extends AbstractDao<Doctor> implements DoctorDao{
     }
 
     @Override
-    public List<Doctor> searchByNameAndPassword(String name, String password) {
+    public List<Doctor> searchByName(String name) {
         return null;
     }
 

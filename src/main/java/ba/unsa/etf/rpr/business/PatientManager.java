@@ -13,7 +13,7 @@ public class PatientManager implements Manager<Patient> {
     }
 
     public Patient getByName(String name) throws DentalClinicException {
-        return (Patient) FactoryDao.patientDao().searchByName(name);
+        return FactoryDao.patientDao().searchByName(name);
     }
 
     public List<Patient> getAll() throws DentalClinicException {
