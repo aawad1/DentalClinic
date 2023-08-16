@@ -67,7 +67,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
      * @param object - a bean object for specific table
      * @return key, value sorted map of object
      */
-    public abstract Map<String, Object> object2row(T object);
+    public abstract Map<String, Object> object2row(T object) throws DentalClinicException;
 
     public T getById(int id) throws DentalClinicException {
         return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE id = ?", new Object[]{id});

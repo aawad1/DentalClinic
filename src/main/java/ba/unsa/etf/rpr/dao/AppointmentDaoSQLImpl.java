@@ -6,6 +6,7 @@ import ba.unsa.etf.rpr.exceptions.DentalClinicException;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class AppointmentDaoSQLImpl extends AbstractDao<Appointment> implements AppointmentDao {
 
@@ -33,8 +34,13 @@ public class AppointmentDaoSQLImpl extends AbstractDao<Appointment> implements A
     }
 
     @Override
-    public Map<String, Object> object2row(Appointment object) {
-        return null;
+    public Map<String, Object> object2row(Appointment object) throws DentalClinicException {
+        Map<String, Object> item = new TreeMap<>();
+        item.put("id", object.getId());
+        item.put("patient", FactoryDao.appointmentDao().getById(object.getId()));
+        item.put("date", object.getDate());
+        item.put("notes", object.getNotes());
+        return item;
     }
 
     @Override
