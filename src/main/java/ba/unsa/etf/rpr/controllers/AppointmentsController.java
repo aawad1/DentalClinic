@@ -30,9 +30,9 @@ public class AppointmentsController {
 
 
     @FXML
-    public void initialize() {
+    public void initialize() throws DentalClinicException {
         idColumn.setCellFactory(new PropertyValueFactory<Appointment, Integer>("id"));
-        Patient patient = new PatientDaoSQLImpl().searchByName(patientNameColumn.getText());
+        Patient patient = PatientDaoSQLImpl.getInstance().searchByName(patientNameColumn.getText());
         patientNameColumn.setCellFactory((Callback<TableColumn, TableCell>) patient);
         dateColumn.setCellFactory(new PropertyValueFactory<Appointment, LocalDateTime>("dateTime"));
         actionsColumn.setCellFactory(new ActionsCellFactory());

@@ -60,7 +60,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
      * @return a Bean object for specific table
      * @throws DentalClinicException in case of error with db
      */
-    public abstract T row2object(ResultSet rs) throws DentalClinicException;
+    public abstract T row2object(ResultSet rs) throws DentalClinicException, SQLException;
 
     /**
      * Method for mapping Object into Map

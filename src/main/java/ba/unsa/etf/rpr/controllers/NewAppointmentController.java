@@ -17,9 +17,9 @@ public class NewAppointmentController {
     public Button saveAppointment;
     private Appointment appointment = new Appointment();
     private AppointmentManager appointmentManager = new AppointmentManager();
-    private PatientDaoSQLImpl patient = new PatientDaoSQLImpl();
+    private PatientDaoSQLImpl patient = PatientDaoSQLImpl.getInstance();
 
-    public void addNewAppointment(ActionEvent actionEvent) {
+    public void addNewAppointment(ActionEvent actionEvent) throws DentalClinicException {
 
         appointment.setPatient(patient.searchByName(patientNameAppointment.getText()));
         appointment.setDateTime(datePickerAppointment);
