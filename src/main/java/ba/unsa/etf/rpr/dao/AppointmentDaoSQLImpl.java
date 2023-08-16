@@ -45,11 +45,19 @@ public class AppointmentDaoSQLImpl extends AbstractDao<Appointment> implements A
 
     @Override
     public Appointment searchByName(String name) throws DentalClinicException {
-        return executeQueryUnique("SELECT * FROM PatientsTable WHERE Name = ?", new Object[]{name});
+        try {
+             return executeQueryUnique("SELECT * FROM TAppointmentsTable WHERE patient = ?", new Object[]{name});
+        }catch (DentalClinicException e){
+            return null;
+        }
     }
 
     @Override
     public Appointment searchByDate(LocalDate date) throws DentalClinicException {
-        return executeQueryUnique("SELECT * FROM PatientsTable WHERE dateTime = ?", new Object[]{date});
+        try {
+            return executeQueryUnique("SELECT * FROM AppointmentsTable WHERE date = ?", new Object[]{date});
+        }catch (DentalClinicException e){
+            return null;
+        }
     }
 }

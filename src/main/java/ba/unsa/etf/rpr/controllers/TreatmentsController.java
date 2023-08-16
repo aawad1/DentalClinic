@@ -28,10 +28,10 @@ public class TreatmentsController {
     @FXML
     public void initialize() {
         try{
-        idColumn.setCellFactory(new PropertyValueFactory<Treatment, Integer>("id"));
-        nameColumn.setCellFactory(new PropertyValueFactory<Treatment, String>("name"));
-        costColumn.setCellFactory(new PropertyValueFactory<Treatment, Double>("cost"));
-        descriptionColumn.setCellFactory(new PropertyValueFactory<Treatment, String>("description"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<Treatment, Integer>("id"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Treatment, String>("name"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<Treatment, Double>("cost"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<Treatment, String>("description"));
         actionsColumn.setCellFactory(new ActionsCellFactoryTreatment());
 
             refreshTreatments();
