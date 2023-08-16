@@ -4,8 +4,8 @@ import ba.unsa.etf.rpr.domain.Patient;
 import ba.unsa.etf.rpr.exceptions.DentalClinicException;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDao {
     private static PatientDaoSQLImpl instance = null;
@@ -52,7 +52,7 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
 
 
     @Override
-    public Patient row2object(ResultSet rs) throws DentalClinicException, SQLException {
+    public Patient row2object(ResultSet rs) throws DentalClinicException {
         try{
             Patient patient = new Patient();
             patient.setId(rs.getInt("id"));
@@ -60,12 +60,6 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
             patient.setName(rs.getString("Name"));
             patient.setAge(rs.getInt("Age"));
             patient.setPhoneNumber(rs.getString("phoneNumber"));
-
-            //patient.setId(rs.getInt(1));
-            //patient.setName(rs.getString(2));
-            //patient.setAge(rs.getInt(3));
-            //patient.setPhoneNumber(rs.getString(4));
-            //patient.setNotes(rs.getString(5));
 
             return patient;
         } catch (Exception e){
@@ -75,7 +69,13 @@ public class PatientDaoSQLImpl extends AbstractDao<Patient> implements PatientDa
 
     @Override
     public Map<String, Object> object2row(Patient object) {
-        return null;
+        Map<String, Object> item = new TreeMap<>();
+        item.put("id", object.getId());
+        item.put("Name", object.getName());
+        item.put("Age", object.getAge());
+        item.put("phoneNumber", object.getPhoneNumber());
+        item.put("Notes", object.getNotes());
+        return item;
     }
 
     @Override
