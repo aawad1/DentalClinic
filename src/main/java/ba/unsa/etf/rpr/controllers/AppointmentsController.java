@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.AppointmentManager;
-import ba.unsa.etf.rpr.controllers.components.ActionsCellFactory;
+import ba.unsa.etf.rpr.controllers.components.ActionsCellFactoryAppointments;
 import ba.unsa.etf.rpr.dao.PatientDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.Appointment;
 import ba.unsa.etf.rpr.domain.Patient;
@@ -22,11 +22,12 @@ public class AppointmentsController {
     public TableColumn idColumn;
     public TableColumn patientNameColumn;
     public TableColumn dateColumn;
-    public TableColumn actionsColumn;
+    public TableColumn<Appointment, Void> actionsColumn;
     public Button newAppointmentButton;
     public Button homeButton;
     private final Appointment appointment = new Appointment();
     private final AppointmentManager appointmentManager = new AppointmentManager();
+    public Button refreshButton;
 
 
     @FXML
@@ -35,7 +36,7 @@ public class AppointmentsController {
         Patient patient = PatientDaoSQLImpl.getInstance().searchByName(patientNameColumn.getText());
         patientNameColumn.setCellFactory((Callback<TableColumn, TableCell>) patient);
         dateColumn.setCellFactory(new PropertyValueFactory<Appointment, LocalDateTime>("dateTime"));
-        actionsColumn.setCellFactory(new ActionsCellFactory());
+        actionsColumn.setCellFactory(new ActionsCellFactoryAppointments());
 
         //refreshAppointments();
     }
@@ -66,5 +67,9 @@ public class AppointmentsController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
 
+    }
+
+    public void refresh(ActionEvent actionEvent) {
+        refreshAppointments();
     }
 }

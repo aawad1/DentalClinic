@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.TreatmentManager;
-import ba.unsa.etf.rpr.controllers.components.ActionsCellFactory;
 import ba.unsa.etf.rpr.controllers.components.ActionsCellFactoryTreatment;
 import ba.unsa.etf.rpr.domain.Treatment;
 import ba.unsa.etf.rpr.exceptions.DentalClinicException;
@@ -19,14 +18,16 @@ public class TreatmentsController {
     public TableColumn nameColumn;
     public TableColumn costColumn;
     public TableColumn descriptionColumn;
-    public TableColumn<ba.unsa.etf.rpr.domain.Patient, Void> actionsColumn;
+    public TableColumn<Treatment, Void> actionsColumn;
     public Button newTreatmentButton;
     public Button homeButton;
+    public Button refreshButton;
     private TreatmentManager treatmentManager = new TreatmentManager();
 
 
     @FXML
     public void initialize() {
+        try{
         idColumn.setCellFactory(new PropertyValueFactory<Treatment, Integer>("id"));
         nameColumn.setCellFactory(new PropertyValueFactory<Treatment, String>("name"));
         costColumn.setCellFactory(new PropertyValueFactory<Treatment, Double>("cost"));
@@ -65,5 +66,8 @@ public class TreatmentsController {
         } catch (Exception e) {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
+    }
+    public void refresh(ActionEvent actionEvent) {
+        refreshTreatments();
     }
 }
