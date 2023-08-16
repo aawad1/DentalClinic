@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.TreatmentManager;
 import ba.unsa.etf.rpr.controllers.components.ActionsCellFactory;
+import ba.unsa.etf.rpr.controllers.components.ActionsCellFactoryTreatment;
 import ba.unsa.etf.rpr.domain.Treatment;
 import ba.unsa.etf.rpr.exceptions.DentalClinicException;
 import javafx.collections.FXCollections;
@@ -13,12 +14,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class TreatmentsController {
-    public TableView treatmentsTable;
+    public TableView<Treatment> treatmentsTable;
     public TableColumn idColumn;
     public TableColumn nameColumn;
     public TableColumn costColumn;
     public TableColumn descriptionColumn;
-    public TableColumn actionsColumn;
+    public TableColumn<ba.unsa.etf.rpr.domain.Patient, Void> actionsColumn;
     public Button newTreatmentButton;
     public Button homeButton;
     private TreatmentManager treatmentManager = new TreatmentManager();
@@ -30,10 +31,14 @@ public class TreatmentsController {
         nameColumn.setCellFactory(new PropertyValueFactory<Treatment, String>("name"));
         costColumn.setCellFactory(new PropertyValueFactory<Treatment, Double>("cost"));
         descriptionColumn.setCellFactory(new PropertyValueFactory<Treatment, String>("description"));
-        actionsColumn.setCellFactory(new ActionsCellFactory());
+        actionsColumn.setCellFactory(new ActionsCellFactoryTreatment());
 
-        //refreshTreatments();
+            refreshTreatments();
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
     }
+
 
     private void refreshTreatments() {
         try {

@@ -12,7 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class PatientsController {
-
+    //public PatientsController(){}
     public TableColumn idColumn;
     public TableColumn nameColumn;
     public TableColumn ageColumn;
@@ -22,6 +22,7 @@ public class PatientsController {
     public Button newPatientButton;
     public Button homeButton;
     private final PatientManager patientManager = new PatientManager();
+    public Button refreshButton;
 
 
     public void initialize() {
@@ -64,5 +65,9 @@ public class PatientsController {
         } catch (Exception e) {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
+    }
+
+    public void refresh(ActionEvent actionEvent) {
+        refreshPatients();
     }
 }
