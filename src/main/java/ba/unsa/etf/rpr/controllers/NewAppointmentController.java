@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.AppointmentManager;
+import ba.unsa.etf.rpr.dao.FactoryDao;
 import ba.unsa.etf.rpr.dao.PatientDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.Appointment;
 import ba.unsa.etf.rpr.exceptions.DentalClinicException;
@@ -20,11 +21,12 @@ public class NewAppointmentController {
     private final PatientDaoSQLImpl patient = PatientDaoSQLImpl.getInstance();
 
     public void addNewAppointment(ActionEvent actionEvent) throws DentalClinicException {
-
-        appointment.setPatient(patient.searchByName(patientNameAppointment.getText()));
+        try {
+            Appointment a = FactoryDao.appointmentDao().searchByName(patientNameAppointment.getText());
+        appointment.setPatient(a.getPatient());
         appointment.setDate(datePickerAppointment.getValue());
         appointment.setNotes(notesAppointment.getText());
-        try {
+
             appointmentManager.add(appointment);
         } catch (DentalClinicException e) {
             OpenNewWindow.alert(Alert.AlertType.ERROR, "ERROR!", "Something went wrong", e.getMessage());

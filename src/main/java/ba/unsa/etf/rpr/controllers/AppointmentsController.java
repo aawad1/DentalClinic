@@ -2,9 +2,7 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.AppointmentManager;
 import ba.unsa.etf.rpr.controllers.components.ActionsCellFactoryAppointments;
-import ba.unsa.etf.rpr.dao.PatientDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.Appointment;
-import ba.unsa.etf.rpr.domain.Patient;
 import ba.unsa.etf.rpr.exceptions.DentalClinicException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -13,9 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-
-import java.time.LocalDateTime;
 
 public class AppointmentsController {
     public TableView appointmentsTable;
@@ -31,14 +26,18 @@ public class AppointmentsController {
 
 
     @FXML
-    public void initialize() throws DentalClinicException {
-        idColumn.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>("id"));
-        Patient patient = PatientDaoSQLImpl.getInstance().searchByName(patientNameColumn.getText());
-        patientNameColumn.setCellValueFactory((Callback<TableColumn, TableCell>) patient);
-        dateColumn.setCellValueFactory(new PropertyValueFactory<Appointment, LocalDateTime>("dateTime"));
-        actionsColumn.setCellFactory(new ActionsCellFactoryAppointments());
+    public void initialize() {
+        try {
+            idColumn.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>("id"));
+            patientNameColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
+            dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+            actionsColumn.setCellFactory(new ActionsCellFactoryAppointments());
 
-        refreshAppointments();
+            refreshAppointments();
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
+
     }
 
     private void refreshAppointments() {

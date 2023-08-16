@@ -37,7 +37,8 @@ public class AppointmentDaoSQLImpl extends AbstractDao<Appointment> implements A
     public Map<String, Object> object2row(Appointment object) throws DentalClinicException {
         Map<String, Object> item = new TreeMap<>();
         item.put("id", object.getId());
-        item.put("patient", FactoryDao.appointmentDao().getById(object.getId()));
+        Appointment a = new FactoryDao().appointmentDao().getById(object.getId());
+        item.put("patient", a.getPatient().getName());
         item.put("date", object.getDate());
         item.put("notes", object.getNotes());
         return item;
@@ -46,18 +47,23 @@ public class AppointmentDaoSQLImpl extends AbstractDao<Appointment> implements A
     @Override
     public Appointment searchByName(String name) throws DentalClinicException {
         try {
-             return executeQueryUnique("SELECT * FROM TAppointmentsTable WHERE patient = ?", new Object[]{name});
+            Appointment a = executeQueryUnique("SELECT * FROM AppointmentsTable WHERE patient = ?", new Object[]{name});
+             return a;
         }catch (DentalClinicException e){
+            System.out.println(e.getMessage());
             return null;
         }
     }
 
     @Override
-    public Appointment searchByDate(LocalDate date) throws DentalClinicException {
-        try {
-            return executeQueryUnique("SELECT * FROM AppointmentsTable WHERE date = ?", new Object[]{date});
-        }catch (DentalClinicException e){
+    public Appointment searchByDate(LocalDate date) {
+    /*    try {
+            Appointment a = executeQueryUnique("SELECT * FROM AppointmentsTable WHERE date = ?", new Object[]{date});
+            return a;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
             return null;
-        }
+        }*/
+        return null;
     }
 }

@@ -1,8 +1,6 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.domain.Appointments;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -10,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class HomeController {
     public BorderPane homeScene;
@@ -23,14 +20,7 @@ public class HomeController {
 
     @FXML
     public void openDoctorWindow(ActionEvent actionEvent) {
- //      Stage stage = (Stage) idDoctors.getScene().getWindow();
-
-   //     String stageName = stage.getTitle();
-     //   String file = stage.getClass().get
-       // Object sceneFile = idDoctors.getUserData();
-       // System.out.println(sceneName);
-
-        new OpenNewWindow().openDialog("Doctors", "/Doctors.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+         new OpenNewWindow().openDialog("Doctors", "/Doctors.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
     }
     @FXML
     public void openPatientWindow(ActionEvent actionEvent) {
@@ -48,12 +38,16 @@ public class HomeController {
     }
     @FXML
     public void initialize() {
-        Timeline timeline = new Timeline(new KeyFrame(Duration.minutes(1), event -> {
-            appCountLabel.setText(appCountLabel.getText() + appointments.getAppointmentList().size());
+        /* Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
+            try {
+                //appCountLabel.setText(appCountLabel.getText() + new FactoryDao().appointmentDao().getAll().size());
+            } catch (DentalClinicException e) {
+                throw new RuntimeException(e);
+            }
         }));
         timeline.setCycleCount(Timeline.INDEFINITE); // Repeat indefinitely
         timeline.play();
-
+*/
     }
 
 }
