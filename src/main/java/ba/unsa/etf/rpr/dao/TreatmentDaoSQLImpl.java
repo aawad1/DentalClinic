@@ -48,6 +48,6 @@ public class TreatmentDaoSQLImpl extends AbstractDao<Treatment> implements Treat
 
     @Override
     public Treatment searchByName(String name) throws DentalClinicException {
-        return executeQueryUnique("SELECT * FROM PatientsTable WHERE Name = ?", new Object[]{name});
+        return executeQueryUnique("SELECT * FROM PatientsTable WHERE name = ?", new Object[]{name});
     }
 }

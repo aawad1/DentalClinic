@@ -1,30 +1,29 @@
 package ba.unsa.etf.rpr.domain;
 
-import javafx.scene.control.DatePicker;
-
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Appointment implements Idable {
     private int id;
     private Patient patient;
-    private DatePicker dateTime;
+    private LocalDate date;
     private String notes;
 
     //Constructors
 
     //Appointment with notes
-    public Appointment(int id, Patient patient, DatePicker dateTime, String notes) {
+    public Appointment(int id, Patient patient, LocalDate date, String notes) {
         this.id = id;
         this.patient = patient;
-        this.dateTime = dateTime;
+        this.date = date;
         this.notes = notes;
     }
 
     //Appointment without notes
-    public Appointment(int id, Patient patient, DatePicker dateTime) {
+    public Appointment(int id, Patient patient, LocalDate date) {
         this.id = id;
         this.patient = patient;
-        this.dateTime = dateTime;
+        this.date = date;
     }
 
     public Appointment() {}
@@ -47,12 +46,11 @@ public class Appointment implements Idable {
         this.patient = patient;
     }
 
-    public DatePicker getDateTime() {
-        return dateTime;
+    public LocalDate getDate() {
+        return date;
     }
-
-    public void setDateTime(DatePicker dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public String getNotes() {
@@ -68,12 +66,12 @@ public class Appointment implements Idable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Appointment that = (Appointment) o;
-        return id == that.id && patient == that.patient && Objects.equals(dateTime, that.dateTime) && Objects.equals(notes, that.notes);
+        return id == that.id && patient == that.patient && Objects.equals(date, that.date) && Objects.equals(notes, that.notes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, patient, dateTime, notes);
+        return Objects.hash(id, patient, date, notes);
     }
 
     @Override
@@ -81,9 +79,11 @@ public class Appointment implements Idable {
         return "Appointment{" +
                 "id=" + id +
                 ", patient=" + patient +
-                ", dateTime=" + dateTime +
+                ", date=" + date +
                 ", notes='" + notes + '\'' +
                 '}';
     }
+
+
 }
 

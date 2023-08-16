@@ -15,14 +15,14 @@ public class NewAppointmentController {
     public TextArea notesAppointment;
     public Button backButton;
     public Button saveAppointment;
-    private Appointment appointment = new Appointment();
-    private AppointmentManager appointmentManager = new AppointmentManager();
-    private PatientDaoSQLImpl patient = PatientDaoSQLImpl.getInstance();
+    private final Appointment appointment = new Appointment();
+    private final AppointmentManager appointmentManager = new AppointmentManager();
+    private final PatientDaoSQLImpl patient = PatientDaoSQLImpl.getInstance();
 
     public void addNewAppointment(ActionEvent actionEvent) throws DentalClinicException {
 
         appointment.setPatient(patient.searchByName(patientNameAppointment.getText()));
-        appointment.setDateTime(datePickerAppointment);
+        appointment.setDate(datePickerAppointment.getValue());
         appointment.setNotes(notesAppointment.getText());
         try {
             appointmentManager.add(appointment);
