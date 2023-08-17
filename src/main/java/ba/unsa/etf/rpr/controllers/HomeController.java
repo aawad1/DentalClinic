@@ -1,6 +1,5 @@
 package ba.unsa.etf.rpr.controllers;
 
-import ba.unsa.etf.rpr.domain.Appointments;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,7 +15,7 @@ public class HomeController {
     public Button idAppointments;
     public Button idTreatments;
     public Label appCountLabel;
-    public Appointments appointments;
+
 
     @FXML
     public void openDoctorWindow(ActionEvent actionEvent) {
