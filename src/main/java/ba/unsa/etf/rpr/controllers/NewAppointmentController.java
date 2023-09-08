@@ -2,8 +2,8 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.AppointmentManager;
 import ba.unsa.etf.rpr.dao.FactoryDao;
-import ba.unsa.etf.rpr.dao.PatientDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.Appointment;
+import ba.unsa.etf.rpr.domain.Patient;
 import ba.unsa.etf.rpr.exceptions.DentalClinicException;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -17,13 +17,21 @@ public class NewAppointmentController {
     public Button backButton;
     public Button saveAppointment;
     private final Appointment appointment = new Appointment();
+    //private Patient p;
+//public NewAppointmentController(Patient p) throws DentalClinicException {p = this.p;}
     private final AppointmentManager appointmentManager = new AppointmentManager();
-    private final PatientDaoSQLImpl patient = PatientDaoSQLImpl.getInstance();
+    public MenuItem menuButton;
+    public MenuItem action1;
+    public MenuItem action2;
+    //private final Patient patient = PatientDaoSQLImpl.getInstance().searchByName(patientNameAppointment.getText());
+
+    public NewAppointmentController() throws DentalClinicException {
+    }
 
     public void addNewAppointment(ActionEvent actionEvent) throws DentalClinicException {
         try {
-            Appointment a = FactoryDao.appointmentDao().searchByName(patientNameAppointment.getText());
-        appointment.setPatient(a.getPatient());
+            Patient p = FactoryDao.patientDao().searchByName(patientNameAppointment.getText());
+        appointment.setPatient(p);
         appointment.setDate(datePickerAppointment.getValue());
         appointment.setNotes(notesAppointment.getText());
 

@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Appointment;
+import ba.unsa.etf.rpr.domain.Patient;
 import ba.unsa.etf.rpr.exceptions.DentalClinicException;
 
 import java.sql.ResultSet;
@@ -23,7 +24,8 @@ public class AppointmentDaoSQLImpl extends AbstractDao<Appointment> implements A
         try{
             Appointment appointment = new Appointment();
             appointment.setId(rs.getInt("id"));
-            appointment.setPatient(FactoryDao.patientDao().getById(rs.getInt("id")));
+            Patient p = new FactoryDao().patientDao().getById(rs.getInt("patient"));
+            appointment.setPatient(p);
             appointment.setDate(rs.getDate("date").toLocalDate());
             appointment.setNotes(rs.getString("notes"));
 
@@ -38,7 +40,7 @@ public class AppointmentDaoSQLImpl extends AbstractDao<Appointment> implements A
         Map<String, Object> item = new TreeMap<>();
         item.put("id", object.getId());
         Appointment a = new FactoryDao().appointmentDao().getById(object.getId());
-        item.put("patient", a.getPatient().getName());
+        item.put("patient", a.getPatient().getId());
         item.put("date", object.getDate());
         item.put("notes", object.getNotes());
         return item;
@@ -47,7 +49,8 @@ public class AppointmentDaoSQLImpl extends AbstractDao<Appointment> implements A
     @Override
     public Appointment searchByName(String name) throws DentalClinicException {
         try {
-            Appointment a = executeQueryUnique("SELECT * FROM AppointmentsTable WHERE patient = ?", new Object[]{name});
+            Patient p = FactoryDao.patientDao().searchByName(name);
+            Appointment a = executeQueryUnique("SELECT * FROM AppointmentsTable WHERE patient = ?", new Object[]{p.getId()});
              return a;
         }catch (DentalClinicException e){
             System.out.println(e.getMessage());

@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class Appointment implements Idable {
     private int id;
+    //private int PatientId;
     private Patient patient;
     private LocalDate date;
     private String notes;

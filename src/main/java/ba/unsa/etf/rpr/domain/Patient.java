@@ -19,6 +19,11 @@ public class Patient implements Idable {
         this.phoneNumber = phoneNumber;
         this.notes = notes;
     }
+    public Patient(String Name,int age, String phoneNumber){
+        this.Name = Name;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+    }
 
     public Patient() {}
 
