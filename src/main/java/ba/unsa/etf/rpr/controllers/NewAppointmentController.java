@@ -10,6 +10,8 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class NewAppointmentController {
     public TextField patientNameAppointment;
     public DatePicker datePickerAppointment;
@@ -20,17 +22,29 @@ public class NewAppointmentController {
     //private Patient p;
 //public NewAppointmentController(Patient p) throws DentalClinicException {p = this.p;}
     private final AppointmentManager appointmentManager = new AppointmentManager();
-    public MenuItem menuButton;
-    public MenuItem action1;
-    public MenuItem action2;
+    public MenuButton menuButton;
     //private final Patient patient = PatientDaoSQLImpl.getInstance().searchByName(patientNameAppointment.getText());
 
     public NewAppointmentController() throws DentalClinicException {
     }
 
+    public void initialize() throws DentalClinicException {
+        List<Patient> patients = new FactoryDao().patientDao().getAll();
+
+        for (Patient p : patients) {
+            MenuItem menuItem = new MenuItem(p.getName());
+            menuItem.setOnAction(event -> setPatientName(p.getName())); // Handle selection
+            menuButton.getItems().add(menuItem);
+        }
+    }
+    private void setPatientName(String name) {
+        //patientNameAppointment.setText(name);
+        menuButton.setText(name);
+    }
+
     public void addNewAppointment(ActionEvent actionEvent) throws DentalClinicException {
         try {
-            Patient p = FactoryDao.patientDao().searchByName(patientNameAppointment.getText());
+            Patient p = FactoryDao.patientDao().searchByName(menuButton.getText());
         appointment.setPatient(p);
         appointment.setDate(datePickerAppointment.getValue());
         appointment.setNotes(notesAppointment.getText());

@@ -5,7 +5,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
@@ -30,13 +29,7 @@
          <children>
             <VBox prefHeight="243.0" prefWidth="100.0" GridPane.vgrow="ALWAYS">
                <children>
-                  <MenuButton mnemonicParsing="false" text="Choose patient">
-                    <items>
-                      <MenuItem fx:id="action1" mnemonicParsing="false" text="Action 1" />
-                      <MenuItem fx:id="action2" mnemonicParsing="false" text="Action 2" />
-                        <MenuItem fx:id="menuButton" mnemonicParsing="false" text="Unspecified Action" />
-                    </items>
-                  </MenuButton>
+                  <MenuButton fx:id="menuButton" mnemonicParsing="false" text="Choose patient" />
                   <TextField fx:id="patientNameAppointment" alignment="CENTER" promptText="Patient name" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
