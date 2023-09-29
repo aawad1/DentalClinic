@@ -49,14 +49,21 @@ public class NewAppointmentController {
         appointment.setDate(datePickerAppointment.getValue());
         appointment.setNotes(notesAppointment.getText());
 
+            //appointmentManager.add(appointment);
+        } catch (DentalClinicException e) {
+            OpenNewWindow.alert(Alert.AlertType.ERROR, "ERROR!", "Something went wrong", e.getMessage());
+            //throw new RuntimeException(e);
+        }/*inally {
+            new OpenNewWindow().openDialog("Appointments", "/Appointments.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+        }*/
+        try {
             appointmentManager.add(appointment);
         } catch (DentalClinicException e) {
             OpenNewWindow.alert(Alert.AlertType.ERROR, "ERROR!", "Something went wrong", e.getMessage());
-            throw new RuntimeException(e);
+//            throw new RuntimeException(e);
         } finally {
             new OpenNewWindow().openDialog("Appointments", "/Appointments.fxml", (Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
         }
-
     }
 
     public void goBack(ActionEvent actionEvent) {

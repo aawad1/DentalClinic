@@ -85,6 +85,11 @@ public class Appointment implements Idable {
                 '}';
     }
 
+    public String getPatientName(){
+        System.out.println("usppjelo");
+        return patient.getName();
+    }
+
 
 }
 

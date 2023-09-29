@@ -12,6 +12,9 @@ import java.util.TreeMap;
 public class AppointmentDaoSQLImpl extends AbstractDao<Appointment> implements AppointmentDao {
 
     private static AppointmentDaoSQLImpl instance = null;
+    private AppointmentDaoSQLImpl() {
+        super("AppointmentsTable");
+    }
 
     public static AppointmentDaoSQLImpl getInstance(){
         if(instance == null)
@@ -37,13 +40,22 @@ public class AppointmentDaoSQLImpl extends AbstractDao<Appointment> implements A
 
     @Override
     public Map<String, Object> object2row(Appointment object) throws DentalClinicException {
-        Map<String, Object> item = new TreeMap<>();
-        item.put("id", object.getId());
-        Appointment a = new FactoryDao().appointmentDao().getById(object.getId());
-        item.put("patient", a.getPatient().getId());
-        item.put("date", object.getDate());
-        item.put("notes", object.getNotes());
-        return item;
+
+        try {
+            Map<String, Object> item = new TreeMap<>();
+            item.put("id", object.getId());
+            item.put("date", object.getDate());
+            item.put("notes", object.getNotes());
+            item.put("patient", object.getPatient().getId());
+
+            return item;
+        }catch (Exception e){
+            try {
+                throw new DentalClinicException(e.getMessage(), e);
+            } catch (DentalClinicException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
     }
 
     @Override

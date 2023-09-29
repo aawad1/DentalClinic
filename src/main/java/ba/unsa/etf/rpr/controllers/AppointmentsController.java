@@ -30,10 +30,12 @@ public class AppointmentsController {
         try {
             idColumn.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>("id"));
             patientNameColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
-            dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-            actionsColumn.setCellFactory(new ActionsCellFactoryAppointments());
+            //patientNameColumn.setCellValueFactory();
+                dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+                actionsColumn.setCellFactory(new ActionsCellFactoryAppointments());
 
             refreshAppointments();
+
         } catch (Exception e) {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }

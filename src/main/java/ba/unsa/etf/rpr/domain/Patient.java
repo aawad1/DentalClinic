@@ -69,13 +69,7 @@ public class Patient implements Idable {
 
     @Override
     public String toString() {
-        return "Patient{" +
-                "id=" + id +
-                ", Name='" + Name + '\'' +
-                ", age=" + age +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", notes='" + notes + '\'' +
-                '}';
+        return Name;
     }
 
     @Override
